@@ -56,7 +56,7 @@ export default function OrderRoute() {
     <div className="account-order">
       <h2>Order {order.name}</h2>
       <p>Placed on {new Date(order.processedAt!).toDateString()}</p>
-      <br />
+
       <div>
         <table>
           <thead>
@@ -153,7 +153,7 @@ export default function OrderRoute() {
           </div>
         </div>
       </div>
-      <br />
+
       <p>
         <a target="_blank" href={order.statusUrl} rel="noreferrer">
           View Order Status →

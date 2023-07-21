@@ -125,7 +125,7 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
       <a href={checkoutUrl} target="_self">
         <p>Continue to Checkout &rarr;</p>
       </a>
-      <br />
+
     </div>
   );
 }
@@ -243,12 +243,12 @@ export function CartEmpty({
 }) {
   return (
     <div hidden={hidden}>
-      <br />
+
       <p>
         Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
         started!
       </p>
-      <br />
+
       <Link
         to="/collections"
         onClick={() => {

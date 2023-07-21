@@ -96,7 +96,7 @@ function RecommendedProducts({
           )}
         </Await>
       </Suspense>
-      <br />
+
     </div>
   );
 }

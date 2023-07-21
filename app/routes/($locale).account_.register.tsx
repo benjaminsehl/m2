@@ -153,11 +153,11 @@ export default function Register() {
             </mark>
           </p>
         ) : (
-          <br />
+
         )}
         <button type="submit">Register</button>
       </Form>
-      <br />
+
       <p>
         <Link to="/account/login">Login →</Link>
       </p>

@@ -121,7 +121,7 @@ export default function Activate() {
             </mark>
           </p>
         ) : (
-          <br />
+
         )}
         <button
           className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"

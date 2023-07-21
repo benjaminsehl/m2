@@ -56,7 +56,7 @@ export default function Recover() {
               with instructions about how to reset your password in a few
               minutes.
             </p>
-            <br />
+
             <Link to="/account/login">Return to Login</Link>
           </>
         ) : (
@@ -66,7 +66,7 @@ export default function Recover() {
               Enter the email address associated with your account to receive a
               link to reset your password.
             </p>
-            <br />
+
             <Form method="POST">
               <fieldset>
                 <label htmlFor="email">Email</label>
@@ -89,12 +89,12 @@ export default function Recover() {
                   </mark>
                 </p>
               ) : (
-                <br />
+
               )}
               <button type="submit">Request Reset Link</button>
             </Form>
             <div>
-              <br />
+
               <p>
                 <Link to="/account/login">Login →</Link>
               </p>

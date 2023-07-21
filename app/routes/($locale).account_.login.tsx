@@ -108,11 +108,11 @@ export default function Login() {
             </mark>
           </p>
         ) : (
-          <br />
+
         )}
         <button type="submit">Sign in</button>
       </Form>
-      <br />
+
       <div>
         <p>
           <Link to="/account/recover">Forgot password →</Link>

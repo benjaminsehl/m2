@@ -101,11 +101,11 @@ export default function Reset() {
             </mark>
           </p>
         ) : (
-          <br />
+
         )}
         <button type="submit">Reset</button>
       </Form>
-      <br />
+
       <p>
         <a href="/account/login">Back to login →</a>
       </p>

@@ -85,8 +85,8 @@ export default function Acccount() {
 
   return (
     <AccountLayout customer={customer as CustomerFragment}>
-      <br />
-      <br />
+
+
       <Outlet context={{customer}} />
     </AccountLayout>
   );
@@ -108,7 +108,7 @@ function AccountLayout({
   return (
     <div className="account">
       <h1>{heading}</h1>
-      <br />
+
       <AcccountMenu />
       {children}
     </div>

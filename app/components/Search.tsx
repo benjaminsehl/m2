@@ -169,7 +169,7 @@ function SearchResultsProductsGrid({products}: Pick<SearchQuery, 'products'>) {
               </div>
               <div>
                 {itemsMarkup}
-                <br />
+
               </div>
               <div>
                 <NextLink>
@@ -180,7 +180,7 @@ function SearchResultsProductsGrid({products}: Pick<SearchQuery, 'products'>) {
           );
         }}
       </Pagination>
-      <br />
+
     </div>
   );
 }
@@ -198,7 +198,7 @@ function SearchResultPageGrid({pages}: Pick<SearchQuery, 'pages'>) {
           </div>
         ))}
       </div>
-      <br />
+
     </div>
   );
 }
@@ -216,7 +216,7 @@ function SearchResultArticleGrid({articles}: Pick<SearchQuery, 'articles'>) {
           </div>
         ))}
       </div>
-      <br />
+
     </div>
   );
 }

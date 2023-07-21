@@ -111,7 +111,7 @@ export default function AccountProfile() {
   return (
     <div className="account-profile">
       <h2>My profile</h2>
-      <br />
+
       <Form method="PUT">
         <legend>Personal information</legend>
         <fieldset>
@@ -172,7 +172,7 @@ export default function AccountProfile() {
             </label>
           </div>
         </fieldset>
-        <br />
+
         <legend>Change password (optional)</legend>
         <fieldset>
           <label htmlFor="currentPassword">Current password</label>
@@ -214,7 +214,7 @@ export default function AccountProfile() {
             </mark>
           </p>
         ) : (
-          <br />
+
         )}
         <button type="submit" disabled={state !== 'idle'}>
           {state !== 'idle' ? 'Updating' : 'Update'}

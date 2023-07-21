@@ -114,10 +114,8 @@ function ProductImage({image}: {image: ProductVariantFragment['image']}) {
   return (
     <div className="product-image">
       <Image
-        alt={image.altText || 'Product Image'}
         aspectRatio="1/1"
         data={image}
-        key={image.id}
         sizes="(min-width: 45em) 50vw, 100vw"
       />
     </div>
@@ -138,7 +136,7 @@ function ProductMain({
     <div className="product-main">
       <h1>{title}</h1>
       <ProductPrice selectedVariant={selectedVariant} />
-      <br />
+
       <Suspense
         fallback={
           <ProductForm
@@ -161,14 +159,12 @@ function ProductMain({
           )}
         </Await>
       </Suspense>
-      <br />
-      <br />
+
       <p>
         <strong>Description</strong>
       </p>
-      <br />
+
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
-      <br />
     </div>
   );
 }
@@ -183,7 +179,7 @@ function ProductPrice({
       {selectedVariant?.compareAtPrice ? (
         <>
           <p>Sale</p>
-          <br />
+
           <div className="product-price-on-sale">
             {selectedVariant ? <Money data={selectedVariant.price} /> : null}
             <s>
@@ -216,7 +212,7 @@ function ProductForm({
       >
         {({option}) => <ProductOptions key={option.name} option={option} />}
       </VariantSelector>
-      <br />
+
       <AddToCartButton
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {
@@ -263,7 +259,6 @@ function ProductOptions({option}: {option: VariantOption}) {
           );
         })}
       </div>
-      <br />
     </div>
   );
 }

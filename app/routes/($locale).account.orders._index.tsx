@@ -59,7 +59,7 @@ export default function Orders() {
       <h2>
         Orders <small>({numberOfOrders})</small>
       </h2>
-      <br />
+
       {orders.nodes.length ? <OrdersTable orders={orders} /> : <EmptyOrders />}
     </div>
   );
@@ -97,7 +97,7 @@ function EmptyOrders() {
   return (
     <div>
       <p>You haven&apos;t placed any orders yet.</p>
-      <br />
+
       <p>
         <Link to="/collections">Start Shopping →</Link>
       </p>
@@ -118,7 +118,7 @@ function OrderItem({order}: {order: OrderItemFragment}) {
         <Money data={order.currentTotalPrice} />
         <Link to={`/account/orders/${btoa(order.id)}`}>View Order →</Link>
       </fieldset>
-      <br />
+
     </>
   );
 }
