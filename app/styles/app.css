@@ -1,5 +1,4 @@
 :root {
-  --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px; /* Remove need for fixed values */
   --cart-aside-summary-height: 250px;
   --grid-item-width: 355px;
@@ -15,12 +14,13 @@
 aside {
   background: var(--color-background);
   height: 100vh;
-  max-width: var(--aside-width);
-  min-width: var(--aside-width);
+  width: 25rem;
+  max-width: 100vw;
   position: fixed;
   transform: translateX(100%);
   right: 0;
   top: 0;
+  z-index: 100;
 }
 
 aside header {
@@ -65,7 +65,7 @@ aside li {
   left: 0;
   opacity: 0;
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   visibility: hidden;
@@ -80,7 +80,7 @@ aside li {
   left: 0;
   position: absolute;
   top: 0;
-  width: calc(100% - var(--aside-width));
+  width: 100%;
 }
 
 .overlay .light {
@@ -210,9 +210,7 @@ aside li {
 .cart-summary-aside {
   background: white;
   bottom: 0;
-  padding-top: 0.75rem;
-  position: absolute;
-  width: calc(var(--aside-width) - 40px);
+  position: fixed;
 }
 
 .cart-line-quantiy {
