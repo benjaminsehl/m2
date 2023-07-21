@@ -1,9 +1,9 @@
 :root {
   --aside-width: 400px;
-  --cart-aside-summary-height-with-discount: 300px; // We should remove the need for this
-  --cart-aside-summary-height: 250px; // We should remove the need for this
-  --grid-item-width: 355px; // We should remove the need for this
-  --header-height: 64px; // We should remove the need for this
+  --cart-aside-summary-height-with-discount: 300px; /* Remove need for fixed values */
+  --cart-aside-summary-height: 250px;
+  --grid-item-width: 355px;
+  --header-height: 64px;
   --color-background: #fff;
 }
 
@@ -14,12 +14,12 @@
 */
 aside {
   background: var(--color-background);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
   height: 100vh;
   max-width: var(--aside-width);
   min-width: var(--aside-width);
   position: fixed;
-  right: calc(-1 * var(--aside-width));
+  transform: translateX(100%);
+  right: 0;
   top: 0;
 }
 
@@ -37,18 +37,11 @@ aside header h3 {
 
 aside header .close {
   font-weight: bold;
-  opacity: 0.8;
   text-decoration: none;
-  transition: all 200ms;
-  width: 20px;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 aside header h2 {
-  margin-bottom: 0.6rem;
-  margin-top: 0;
+  margin: 0;
 }
 
 aside main {
@@ -109,7 +102,7 @@ aside li {
   }
   /* reveal aside */
   &:target aside {
-    transform: translateX(calc(var(--aside-width) * -1));
+    transform: translateX(0);
   }
 }
 
@@ -236,13 +229,14 @@ aside li {
   align-items: center;
   display: flex;
 }
+
 /*
 * --------------------------------------------------
 * components/Search
 * --------------------------------------------------
 */
 .predictive-search {
-  height: calc(100vh - var(--header-height) - 40px); // Why "- 40px"
+  height: calc(100vh - var(--header-height) - 40px); /* Why "- 40px" */
   overflow-y: auto;
 }
 

@@ -47,7 +47,7 @@ export function Layout({
 
 function CartAside({cart}: {cart: LayoutProps['cart']}) {
   return (
-    <Aside id="cart-aside" heading="CART">
+    <Aside id="cart-aside" heading="Cart">
       <Suspense fallback={<p>Loading cart ...</p>}>
         <Await resolve={cart}>
           {(cart) => {
@@ -61,7 +61,7 @@ function CartAside({cart}: {cart: LayoutProps['cart']}) {
 
 function SearchAside() {
   return (
-    <Aside id="search-aside" heading="SEARCH">
+    <Aside id="search-aside" heading="Search">
       <div className="predictive-search">
 
         <PredictiveSearchForm>
@@ -88,7 +88,7 @@ function SearchAside() {
 
 function MobileMenuAside({menu}: {menu: HeaderQuery['menu']}) {
   return (
-    <Aside id="mobile-menu-aside" heading="MENU">
+    <Aside id="mobile-menu-aside" heading="Menu">
       <HeaderMenu menu={menu} viewport="mobile" />
     </Aside>
   );
