@@ -1,9 +1,9 @@
 :root {
   --aside-width: 400px;
-  --cart-aside-summary-height-with-discount: 300px;
-  --cart-aside-summary-height: 250px;
-  --grid-item-width: 355px;
-  --header-height: 64px;
+  --cart-aside-summary-height-with-discount: 300px; // We should remove the need for this
+  --cart-aside-summary-height: 250px; // We should remove the need for this
+  --grid-item-width: 355px; // We should remove the need for this
+  --header-height: 64px; // We should remove the need for this
   --color-background: #fff;
 }
 
@@ -21,7 +21,6 @@ aside {
   position: fixed;
   right: calc(-1 * var(--aside-width));
   top: 0;
-  transition: transform 200ms ease-in-out;
 }
 
 aside header {
@@ -76,8 +75,6 @@ aside li {
   position: absolute;
   right: 0;
   top: 0;
-  transition: opacity 400ms ease-in-out;
-  transition: opacity 400ms;
   visibility: hidden;
   z-index: 10;
 }
