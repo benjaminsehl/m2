@@ -450,14 +450,12 @@ export function AddressForm({
           />
           <label htmlFor="defaultAddress">Set as default address</label>
         </div>
-        {error ? (
+        {error && (
           <p>
             <mark>
               <small>{error}</small>
             </mark>
           </p>
-        ) : (
-
         )}
         {children({
           stateForMethod: (method) => (formMethod === method ? state : 'idle'),

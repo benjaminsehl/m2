@@ -94,14 +94,12 @@ export default function Reset() {
             type="password"
           />
         </fieldset>
-        {action?.error ? (
+        {action?.error && (
           <p>
             <mark>
               <small>{action.error}</small>
             </mark>
           </p>
-        ) : (
-
         )}
         <button type="submit">Reset</button>
       </Form>

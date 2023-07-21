@@ -82,19 +82,16 @@ export default function Recover() {
                   type="email"
                 />
               </fieldset>
-              {action?.error ? (
+              {action?.error && (
                 <p>
                   <mark>
                     <small>{action.error}</small>
                   </mark>
                 </p>
-              ) : (
-
               )}
               <button type="submit">Request Reset Link</button>
             </Form>
             <div>
-
               <p>
                 <Link to="/account/login">Login →</Link>
               </p>

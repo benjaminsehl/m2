@@ -207,14 +207,12 @@ export default function AccountProfile() {
           />
           <small>Passwords must be at least 8 characters.</small>
         </fieldset>
-        {action?.error ? (
+        {action?.error && (
           <p>
             <mark>
               <small>{action.error}</small>
             </mark>
           </p>
-        ) : (
-
         )}
         <button type="submit" disabled={state !== 'idle'}>
           {state !== 'idle' ? 'Updating' : 'Update'}

@@ -146,14 +146,12 @@ export default function Register() {
             required
           />
         </fieldset>
-        {error ? (
+        {error && (
           <p>
             <mark>
               <small>{error}</small>
             </mark>
           </p>
-        ) : (
-
         )}
         <button type="submit">Register</button>
       </Form>

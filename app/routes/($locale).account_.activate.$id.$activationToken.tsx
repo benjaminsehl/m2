@@ -114,17 +114,15 @@ export default function Activate() {
             required
           />
         </fieldset>
-        {error ? (
+        {error && (
           <p>
             <mark>
               <small>{error}</small>
             </mark>
           </p>
-        ) : (
-
         )}
         <button
-          className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+          className="block w-full px-4 py-2 rounded bg-primary text-contrast focus:shadow-outline"
           type="submit"
         >
           Save

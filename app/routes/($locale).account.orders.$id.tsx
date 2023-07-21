@@ -136,13 +136,10 @@ export default function OrderRoute() {
                   order.shippingAddress.firstName + ' '}
                 {order.shippingAddress.lastName}
               </p>
-              {order?.shippingAddress?.formatted ? (
+              {order?.shippingAddress?.formatted &&
                 order.shippingAddress.formatted.map((line: string) => (
                   <p key={line}>{line}</p>
-                ))
-              ) : (
-                <></>
-              )}
+                ))}
             </address>
           ) : (
             <p>No shipping address defined</p>

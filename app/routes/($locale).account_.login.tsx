@@ -101,14 +101,12 @@ export default function Login() {
             required
           />
         </fieldset>
-        {error ? (
+        {error && (
           <p>
             <mark>
               <small>{error}</small>
             </mark>
           </p>
-        ) : (
-
         )}
         <button type="submit">Sign in</button>
       </Form>
