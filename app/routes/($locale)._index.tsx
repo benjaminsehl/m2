@@ -5,8 +5,7 @@ import {
 } from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
-import {Money} from '@shopify/hydrogen';
-import {Image} from '~/components/Image';
+import {Money, Image} from '@shopify/hydrogen';
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
