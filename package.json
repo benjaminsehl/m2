@@ -18,11 +18,13 @@
     "@shopify/cli-hydrogen": "0.0.0-next-c39411e-20230721152500",
     "@shopify/hydrogen": "0.0.0-next-c39411e-20230721152500",
     "@shopify/remix-oxygen": "^1.1.1",
+    "class-variance-authority": "^0.7.0",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "isbot": "^3.6.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@remix-run/dev": "1.17.1",

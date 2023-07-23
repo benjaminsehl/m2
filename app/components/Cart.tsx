@@ -1,4 +1,4 @@
-import {CartForm, Image, Money} from '@shopify/hydrogen';
+import {CartForm, Money, Image} from '@shopify/hydrogen';
 import type {CartLineUpdateInput} from '@shopify/hydrogen/storefront-api-types';
 import {Link} from '@remix-run/react';
 import type {CartApiQueryFragment} from 'storefrontapi.generated';
@@ -52,7 +52,7 @@ function CartLines({
   if (!lines) return null;
 
   return (
-    <div aria-labelledby="cart-lines">
+    <div aria-labelledby="cart-lines" className="cart-lines">
       <ul>
         {lines.nodes.map((line) => (
           <CartLineItem key={line.id} line={line} layout={layout} />
@@ -125,7 +125,6 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
       <a href={checkoutUrl} target="_self">
         <p>Continue to Checkout &rarr;</p>
       </a>
-
     </div>
   );
 }
@@ -243,7 +242,6 @@ export function CartEmpty({
 }) {
   return (
     <div hidden={hidden}>
-
       <p>
         Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
         started!

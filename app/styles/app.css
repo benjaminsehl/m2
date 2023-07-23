@@ -1,9 +1,35 @@
 :root {
   --cart-aside-summary-height-with-discount: 300px; /* Remove need for fixed values */
   --cart-aside-summary-height: 250px;
-  --grid-item-width: 355px;
+  --grid-item-width: 20rem;
   --header-height: 64px;
   --color-background: #fff;
+}
+
+/*
+* --------------------------------------------------
+* Global
+* --------------------------------------------------
+*/
+
+
+img {
+  border-radius: 0.25rem;
+  position: relative;
+  border: rgba(0, 0, 0, 0.1) solid 1px;
+  background: rgba(0, 0, 0, 0.05);
+  object-fit: cover;
+  opacity: 0;
+  animation: loading 0.5s ease-in-out forwards;
+}
+
+@keyframes loading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*
@@ -18,9 +44,13 @@ aside {
   max-width: 100vw;
   position: fixed;
   transform: translateX(100%);
+  transition: opacity translateX 0.2s ease-in-out;
   right: 0;
   top: 0;
   z-index: 100;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 aside header {
@@ -28,7 +58,6 @@ aside header {
   display: flex;
   height: var(--header-height);
   justify-content: space-between;
-  padding: 0 20px;
 }
 
 aside header h3 {
@@ -45,7 +74,7 @@ aside header h2 {
 }
 
 aside main {
-  margin: 1rem;
+  flex: 1;
 }
 
 aside p {
@@ -81,6 +110,7 @@ aside li {
   position: absolute;
   top: 0;
   width: 100%;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .overlay .light {
@@ -99,10 +129,12 @@ aside li {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
+    transition: opacity 0.2s ease-in-out;
   }
   /* reveal aside */
   &:target aside {
     transform: translateX(0);
+    transition: opacity translateX 0.2s ease-in-out;
   }
 }
 
@@ -182,14 +214,18 @@ aside li {
 * --------------------------------------------------
 */
 .cart-main {
-  height: 100%;
-  max-height: calc(100vh - var(--cart-aside-summary-height));
   overflow-y: auto;
   width: auto;
 }
 
-.cart-main.with-discount {
-  max-height: calc(100vh - var(--cart-aside-summary-height-with-discount));
+aside .cart-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-lines {
+  flex: 1;
+  overflow-y: scroll;
 }
 
 .cart-line {
@@ -205,12 +241,6 @@ aside li {
 
 .cart-summary-page {
   position: relative;
-}
-
-.cart-summary-aside {
-  background: white;
-  bottom: 0;
-  position: fixed;
 }
 
 .cart-line-quantiy {
@@ -284,9 +314,15 @@ aside li {
   position: relative;
 }
 
+.featured-collection-image {
+  height: auto;
+  max-height: 60vh;
+  object-fit: cover;
+}
+
 .recommended-products-grid {
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
@@ -300,7 +336,7 @@ aside li {
 */
 .collections-grid {
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
   margin-bottom: 2rem;
 }

@@ -5,9 +5,8 @@ import {
   Form,
   type FormProps,
 } from '@remix-run/react';
-import {Pagination} from '@shopify/hydrogen';
+import {Pagination, Money, Image} from '@shopify/hydrogen';
 import React, {useRef, useEffect} from 'react';
-import {Image, Money} from '@shopify/hydrogen-react';
 import {useFetchers} from '@remix-run/react';
 
 import type {
@@ -167,10 +166,7 @@ function SearchResultsProductsGrid({products}: Pick<SearchQuery, 'products'>) {
                   {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
                 </PreviousLink>
               </div>
-              <div>
-                {itemsMarkup}
-
-              </div>
+              <div>{itemsMarkup}</div>
               <div>
                 <NextLink>
                   {isLoading ? 'Loading...' : <span>Load more ↓</span>}
@@ -180,7 +176,6 @@ function SearchResultsProductsGrid({products}: Pick<SearchQuery, 'products'>) {
           );
         }}
       </Pagination>
-
     </div>
   );
 }
@@ -198,7 +193,6 @@ function SearchResultPageGrid({pages}: Pick<SearchQuery, 'pages'>) {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
@@ -216,7 +210,6 @@ function SearchResultArticleGrid({articles}: Pick<SearchQuery, 'articles'>) {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
@@ -393,9 +386,8 @@ function SearchResultItem({goToSearchResult, item}: SearchResultItemProps) {
           <Image
             alt={item.image.altText ?? ''}
             src={item.image.url}
-            width={50}
-            height={50}
-            style={{height: '100%'}}
+            width="3rem"
+            height="3rem"
           />
         )}
         <div>

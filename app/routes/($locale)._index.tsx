@@ -1,12 +1,17 @@
-import type {V2_MetaFunction} from '@shopify/remix-oxygen';
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
+import {
+  defer,
+  type LoaderArgs,
+  type V2_MetaFunction,
+} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
+import {Money} from '@shopify/hydrogen';
+import {Image} from '~/components/Image';
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import React from 'react';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Hydrogen | Home'}];
@@ -47,11 +52,8 @@ function FeaturedCollection({
           <Image
             data={image}
             sizes="(min-width: 45em) 40vw, 100vw"
-            style={{
-              height: 'auto',
-              maxHeight: '600px',
-              objectFit: 'cover',
-            }}
+            className='featured-collection-image'
+            aspectRatio='1/1'
           />
         </div>
       )}
@@ -88,7 +90,10 @@ function RecommendedProducts({
                   />
                   <h4>{product.title}</h4>
                   <small>
-                    <Money data={product.priceRange.minVariantPrice} />
+                    <Money
+                      as={React.Fragment}
+                      data={product.priceRange.minVariantPrice}
+                    />
                   </small>
                 </Link>
               ))}
@@ -96,7 +101,6 @@ function RecommendedProducts({
           )}
         </Await>
       </Suspense>
-
     </div>
   );
 }
