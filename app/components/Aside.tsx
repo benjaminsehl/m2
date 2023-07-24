@@ -45,3 +45,37 @@ function CloseAside() {
     </a>
   );
 }
+
+/** Desired DX
+ *
+ * <Drawer>
+ *   <Drawer.Header>
+ *     <Drawer.Title>
+ *       {children}
+ *     </Drawer.Title>
+ *     <Drawer.Close />
+ *   </Drawer.Header>
+ *   <Drawer.Main>
+ *     {children}
+ *   </Drawer.Main>
+ *   <Drawer.Footer>
+ *     // Sticky to bottom, meant for Cart Summary, etc.
+ *     {children}
+ *   </Drawer.Footer>
+ * </Drawer>
+ */
+
+/* Rendered HTML should be as simple as possible, so that it's easy to style…
+ * <aside class="drawer">
+ *   <header>
+ *    <h3>Cart</h3>
+ *   <a href="#">Close</a>
+ *   </header>
+ *   <main>
+ *     ...
+ *   </main>
+ *   <footer>
+ *     ...
+ *   </footer>
+ * </aside>
+ */
