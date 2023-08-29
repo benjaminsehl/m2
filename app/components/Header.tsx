@@ -9,7 +9,7 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header">
+    <header className="fixed top-0 z-50 flex w-screen">
       <Link prefetch="intent" to="/">
         <strong>{shop.name}</strong>
       </Link>

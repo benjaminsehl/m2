@@ -5,12 +5,14 @@ import {
 } from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
-import {Money, Image} from '@shopify/hydrogen';
+import {Money, Image, flattenConnection} from '@shopify/hydrogen';
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import React from 'react';
+import {MEDIA_FRAGMENT} from '~/lib/fragments';
+import {Hero} from '~/components';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Hydrogen | Home'}];
@@ -18,19 +20,26 @@ export const meta: V2_MetaFunction = () => {
 
 export async function loader({context}: LoaderArgs) {
   const {storefront} = context;
-  const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
-  const featuredCollection = collections.nodes[0];
-  const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
+  const {heroBanners} = await storefront.query(HOMEPAGE_CONTENT_QUERY);
 
-  return defer({featuredCollection, recommendedProducts});
+  return defer({banners: flattenConnection(heroBanners)});
 }
 
 export default function Homepage() {
-  const data = useLoaderData<typeof loader>();
+  const {banners} = useLoaderData<typeof loader>();
   return (
-    <div className="home">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
+    <div>
+      {banners?.length > 0 &&
+        banners.map((hero, i) => (
+          <Hero
+            key={hero.id}
+            headline={hero?.headline?.value}
+            media={hero?.media?.references?.nodes}
+            product={hero?.product?.reference || null}
+            textColour={hero?.textColour?.value.toLowerCase() || 'contrast'}
+            loading={i === 1 ? 'eager' : 'lazy'}
+          />
+        ))}
     </div>
   );
 }
@@ -51,8 +60,8 @@ function FeaturedCollection({
           <Image
             data={image}
             sizes="(min-width: 45em) 40vw, 100vw"
-            className='featured-collection-image'
-            aspectRatio='1/1'
+            className="featured-collection-image"
+            aspectRatio="1/1"
           />
         </div>
       )}
@@ -104,54 +113,42 @@ function RecommendedProducts({
   );
 }
 
-const FEATURED_COLLECTION_QUERY = `#graphql
-  fragment FeaturedCollection on Collection {
-    id
-    title
-    image {
-      id
-      url
-      altText
-      width
-      height
-    }
-    handle
-  }
-  query FeaturedCollection {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...FeaturedCollection
-      }
-    }
-  }
-` as const;
-
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-  fragment RecommendedProduct on Product {
-    id
-    title
-    handle
-    priceRange {
-      minVariantPrice {
-        amount
-        currencyCode
-      }
-    }
-    images(first: 1) {
+const HOMEPAGE_CONTENT_QUERY = `#graphql
+  ${MEDIA_FRAGMENT}
+  query homepage($country: CountryCode) @inContext(country: $country) {
+    heroBanners: metaobjects(type: "hero", first: 10, sortKey: "updated_at") {
       nodes {
         id
-        url
-        altText
-        width
-        height
+        headline: field(key: "headline") {
+          value
+        }
+        media: field(key: "media") {
+          references(first: 4) {
+            nodes {
+              ...Media
+            }
+          }
+        }
+        product: field(key: "product") {
+          reference {
+            ... on Product {
+              handle
+            }
+          }
+        }
+        textColour: field(key: "text_colour") {
+          value
+        }
       }
     }
   }
-  query RecommendedProducts {
-    products(first: 4, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...RecommendedProduct
-      }
+`;
+
+const HOMEPAGE_SEO_QUERY = `#graphql
+  query shopInfo {
+    shop {
+      name
+      description
     }
   }
-` as const;
+`;

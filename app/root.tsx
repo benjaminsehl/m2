@@ -11,11 +11,11 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  LiveReload,
 } from '@remix-run/react';
 import type {CustomerAccessToken} from '@shopify/hydrogen-react/storefront-api-types';
 import type {HydrogenSession} from '../server';
 import favicon from '../public/favicon.svg';
-import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import {Layout} from '~/components/Layout';
 import tailwindCss from './styles/tailwind.css';
@@ -23,7 +23,6 @@ import tailwindCss from './styles/tailwind.css';
 export function links() {
   return [
     {rel: 'stylesheet', href: tailwindCss},
-    {rel: 'stylesheet', href: resetStyles},
     {rel: 'stylesheet', href: appStyles},
     {
       rel: 'preconnect',
@@ -96,6 +95,7 @@ export default function App() {
         </Layout>
         <ScrollRestoration />
         <Scripts />
+        <LiveReload />
       </body>
     </html>
   );
